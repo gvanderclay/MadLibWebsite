@@ -8,7 +8,7 @@ function getAllMadLibs ()
 {
     $.ajax({
         type: "GET",
-        url: 'getMadLibs.php',
+        url: '/scripts/php/getMadLibs.php',
         success: function (data) {
             $('#content').html(data);
         },
@@ -25,7 +25,7 @@ function getMadlibById(id)
 {
     $.ajax({
         type: "GET",
-        url: 'getMadLibById.php',
+        url: '/scripts/php/getMadLibById.php',
         success: function (data) {
             $('#content').html(data);
         },
@@ -38,10 +38,11 @@ function getMadlibById(id)
 
 //Return the HTML for displaying the homepage text. 
 //Include a bit about our group and what the website will do
+//TODO do we need an ajax call to do this? I think we could just do some javascript for this
 function getHome() {
     $.ajax({
         type: "GET",
-        url: 'getHome.php',
+        url: '/scripts/php/getHome.php',
         success: function (data) {
             $('#content').html(data);
         },
@@ -58,7 +59,7 @@ function saveMadLib(madLib)
 {
     $.ajax({
         type: "POST",
-        url: 'saveMadLib.php',
+        url: 'scripts/php/saveMadLib.php',
         data: JSON.stringify(madLib),
         contentType: 'application/json',
         success: function(data)
