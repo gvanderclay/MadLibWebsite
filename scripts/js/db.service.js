@@ -41,8 +41,7 @@ function getMadlibById(id)
 //TODO do we need an ajax call to do this? I think we could just do some javascript for this
 function getHome() {
     $.ajax({
-        type: "GET",
-        url: '/scripts/php/getHome.php',
+        url: 'resources/homepagetext.html',
         success: function (data) {
             $('#content').html(data);
         },
