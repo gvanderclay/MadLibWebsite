@@ -9,3 +9,16 @@ var processMadLibsJson = function(madLibs){
         }
     });
 }
+
+
+var loadCreatePage = function(){
+     $.ajax({
+        url: "resources/madlibcreation.html",
+        success: function(data){
+           $("#content").html(data); 
+        },
+        error: function(data){
+            console.log(data);
+        }
+    });
+}

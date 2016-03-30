@@ -13,7 +13,7 @@ function getAllMadLibs ()
             processMadLibsJson(data);
         },
         error: function (data) {
-           $.jgrowl("An Error occured loading mad libs.");
+           $.jGrowl("An Error occured loading mad libs.");
         }
     });
 }
@@ -38,7 +38,6 @@ function getMadlibById(id)
 
 //Return the HTML for displaying the homepage text. 
 //Include a bit about our group and what the website will do
-//TODO do we need an ajax call to do this? I think we could just do some javascript for this
 function getHome() {
     $.ajax({
         url: 'resources/homepagetext.html',
