@@ -8,12 +8,12 @@ function getAllMadLibs ()
 {
     $.ajax({
         type: "GET",
-        url: '/scripts/php/getMadLibs.php',
+        url: 'scripts/php/getMadLibs.php',
         success: function (data) {
-            $('#content').html(data);
+            processMadLibsJson(data);
         },
         error: function (data) {
-            $.Jgrowl("An Error occured loading mad libs.");
+           $.jgrowl("An Error occured loading mad libs.");
         }
     });
 }
@@ -25,7 +25,7 @@ function getMadlibById(id)
 {
     $.ajax({
         type: "GET",
-        url: '/scripts/php/getMadLibById.php',
+        url: 'scripts/php/getMadLibById.php',
         success: function (data) {
             $('#content').html(data);
         },
@@ -72,3 +72,4 @@ function saveMadLib(madLib)
     });
 }
 
+$(document).ready(getHome);
