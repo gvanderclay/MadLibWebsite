@@ -1,17 +1,31 @@
 <?php
-session_start();
 //get madlib by ID
+require('functions.php');
+
+
+$conn = connectToSQL();
+
 
 $cmdText = 'SELECT TITLE, CATEGORY, RATING FROM MadLibs';
 
-$result = mysql_query($cmdText);
+$result = mysql_query($cmdText, $conn);
 if (!$result) {
     die('Invalid query: ' . mysql_error());
 }
 
-json_encode($cmdText);
+$arr = array();
 
-echo $result;
+while($row = mysql_fetch_row($result) ){
+
+	$arr[] = $row;
+	
+
+
+}
+
+echo json_encode($arr);
+
+
 
 
 

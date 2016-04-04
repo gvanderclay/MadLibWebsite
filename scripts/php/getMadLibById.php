@@ -2,28 +2,16 @@
 <head></head>
 <body>
 
-fucking hi
+
 <?php 
 
 //get madlib by ID
+require ('functions.php');
 
 
-$servername = "cis.gvsu.edu";
-$username = "jardine";
-$password = "jardine1214";
-$dbname = "jardine";
+$conn = connectToSQL();
 
-// Create connection
-        $conn = mysql_connect($servername, $username, $password)
-                or die("Could not connect..." . mysql_error($conn) );
-
-        $selected = mysql_select_db("jardine",$conn)
-  or die("Could not select examples" . mysql_error($conn));
-
-
-
-
-$cmdText = 'SELECT TITLE, MADLIB_TEXT, RATING FROM MadLibs WHERE SEQ_ID = 3';
+$cmdText = 'SELECT TITLE, MADLIB_TEXT, CATEGORY, RATING FROM MadLibs WHERE SEQ_ID = ' . $_GET['id'];
 
 
 $result = mysql_query($cmdText, $conn);
@@ -33,14 +21,32 @@ if (!$result) {
 
 
 
-//echo 'Hello' . mysql_fetch_row($result);
+$arr =  mysql_fetch_row($result);
 
-echo 'new' . $result
+if(count($arr)  === 0) {
+//return null;
+	echo 'ID does not exist';
+}else {
+
+echo json_encode($arr);
+
+}
+
+/*
+foreach($arr as $col) {
+//iterate through columns
+
+echo $col . '<br>';
+
+
+}
+//echo 'new' . $result;
 
 //$decode = json_decode($result, true);
-
-
 //echo $decode;
+
+
+*/
 
 mysql_close($conn);
 
