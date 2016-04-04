@@ -1,15 +1,30 @@
 <div id="create">
-    <h3 class="descriptionHeader">Create a Mad Lib</h3>
-    <h4>Title</h4>
-    <input type="text" class="form-control" placeholder="title">
-    <h4>Categories</h4>
-    <select id="Categories" class="form-control">
-        <option>College</option>
-        <option>Food</option>
-        <option>Politics</option>
-        <option>Pop Culture</option>
-        <option>Sports</option>
-    </select>
-    <h4>Contents</h4>
-    <textarea id="madlibcontents" class="form-control" rows="3"></textarea>
+    <form action="somephp.php" method="POST">
+        <h3 class="descriptionHeader">Create a Mad Lib</h3>
+        <h4>Title</h4>
+        <input type="text" class="form-control" placeholder="title">
+        <h4>Categories</h4>
+        <select id="Categories" class="form-control">
+            <option>College</option>
+            <option>Food</option>
+            <option>Politics</option>
+            <option>Pop Culture</option>
+            <option>Sports</option>
+        </select>
+        <h4>Contents</h4>
+        <div>
+            <textarea id="madlibcontents" class="form-control" style="width:75%; display:inline; float:left;" rows="10" placeholder="Write your Mad Lib Here"></textarea>
+            <div style="float:left; position:relative; text-align:center; ">
+                <label>Legend</label>
+                <ul>
+                    <li>Adjective: [adj]</li>
+                    <li>Adverb: [adv]</li>
+                    <li>Noun: [non]</li>
+                    <li>Name: [nme]</li>
+                </ul>
+                <br />
+                <input type="submit" name="sbmt" value="Save" class="btn btn-submit" style="position:absolute; bottom:0; left:25%; width:50%; margin-top:10%;" />
+            </div>
+        </div>
+    </form>
 </div>
