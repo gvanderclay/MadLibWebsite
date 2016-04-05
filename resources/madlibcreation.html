@@ -1,8 +1,57 @@
 <div id="create">
-    <form action="somephp.php" method="POST">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">Title</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="title" placeholder="Title of the Mad Lib">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category" class="col-sm-2 control-label">Category</label>
+            <div class="col-sm-8">
+                <div class="input-group">
+                        <select class="form-control" id="category">
+                            <option>College</option>
+                            <option>Food</option>
+                            <option>Politics</option>
+                            <option>Pop Culture</option>
+                            <option>Sports</option>
+                        </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="madlibcontents" class="col-sm-2 control-label">Contents</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" id="madlibcontents" placeholder="Description" rows="10"></textarea>
+            </div>
+            <div class="col-sm-4">
+                <div id="legend">
+                    <label>Legend</label>
+                    <ul>
+                        <li>Adjective: [adj]</li>
+                        <li>Adverb: [adv]</li>
+                        <li>Noun: [non]</li>
+                        <li>Name: [nme]</li>
+                    </ul>
+                    <br/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+    <!--    <form action="somephp.php" method="POST">
         <h3 class="descriptionHeader">Create a Mad Lib</h3>
         <h4>Title</h4>
-        <input type="text" class="form-control" placeholder="title">
+        <div class="row">
+            <div class="col-lg-8">
+                <input type="text" class="form-control" placeholder="title">
+            </div>
+        </div>
         <h4>Categories</h4>
         <select id="Categories" class="form-control">
             <option>College</option>
@@ -12,19 +61,25 @@
             <option>Sports</option>
         </select>
         <h4>Contents</h4>
-        <div>
-            <textarea id="madlibcontents" class="form-control" style="width:75%; display:inline; float:left;" rows="10" placeholder="Write your Mad Lib Here"></textarea>
-            <div style="float:left; position:relative; text-align:center; ">
-                <label>Legend</label>
-                <ul>
-                    <li>Adjective: [adj]</li>
-                    <li>Adverb: [adv]</li>
-                    <li>Noun: [non]</li>
-                    <li>Name: [nme]</li>
-                </ul>
-                <br />
-                <input type="submit" name="sbmt" value="Save" class="btn btn-submit" style="position:absolute; bottom:0; left:25%; width:50%; margin-top:10%;" />
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <textarea id="madlibcontents" class="form-control" rows="10" placeholder="Write your Mad Lib Here"></textarea>
+                </div>
+                <div class="col-lg-4">
+                    <div id="legend">
+                        <label>Legend</label>
+                        <ul>
+                            <li>Adjective: [adj]</li>
+                            <li>Adverb: [adv]</li>
+                            <li>Noun: [non]</li>
+                            <li>Name: [nme]</li>
+                        </ul>
+                        <br/>
+                    </div>
+                </div>
             </div>
+            <input type="submit" name="sbmt" value="Save" class="btn btn-submit" />
         </div>
-    </form>
+    </form>-->
 </div>
