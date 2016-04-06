@@ -32,8 +32,12 @@ var makeMadLibList = function(html, madLibs){
     // iterate through the madLibs and add the buttons
     for(var madLibIndex in madLibsJSON){
         var madLib = madLibsJSON[madLibIndex];
+
+        var madLibSplit = madLib.toString().split(",");
+        console.log(madLibSplit);
+
         //TODO format the data in the buttons better
-        jHtml.find("div#madLibList").append($('<button type="button" class="list-group-item">' + madLib +'</button>')).html();
+        jHtml.find("div#madLibList").append($('<button type="button" class="list-group-item"> <div class ="titleLeft">' + madLibSplit[0] + '</div> <div class="categoryRight">' + madLibSplit[1] + '</div></button>')).html();
     }
     $("#content").html(jHtml);
 }
