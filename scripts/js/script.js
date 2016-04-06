@@ -36,8 +36,8 @@ var makeMadLibList = function(html, madLibs){
         var madLibSplit = madLib.toString().split(",");
         console.log(madLibSplit);
 
-        //TODO format the data in the buttons better
-        jHtml.find("div#madLibList").append($('<button type="button" class="list-group-item"> <div class ="titleLeft">' + madLibSplit[0] + '</div> <div class="categoryRight">' + madLibSplit[1] + '</div></button>')).html();
+        //TODO find a way to put the title on the far left and the category on the far right without it looking fucking stupid
+        jHtml.find("div#madLibList").append($('<button type="button" class="list-group-item"> <div class="titleLeft">' + madLibSplit[0] + '</div> <div class="categoryRight">' + madLibSplit[1] + '</div></button>')).html();
     }
     $("#content").html(jHtml);
 }
