@@ -16,3 +16,11 @@ body {
     /*float:left; */
     position:relative;
 }
+
+.titleLeft {
+    text-align: left;
+}
+
+.categoryRight{
+    text-align: right;
+}
