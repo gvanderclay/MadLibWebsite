@@ -119,3 +119,12 @@ var loadCategories = function(html){
     }
     $("#content").html(jHtml);
 }
+
+var testStr = "This is a simple test for my Mad Lib website. [Adjective] ad;fajf;l;akjijcicjijeinamn,nsdf,mn [Noun] a;dlkjbzoeowijrlknakjdf [a game]. a;sdjlzbhoiehoj [that game again].";
+
+var parseMadLib = function(str){
+    var regex = /\[(.*?)\]/gm;
+    return  str.match(regex);
+}
+
+$(document).ready(parseMadLib(testStr));
