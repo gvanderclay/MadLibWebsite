@@ -31,36 +31,56 @@ var makeMadLibList = function(html, madLibs){
         showNoMadLibs();
         return;
     }
+
+    var buttonHTML = '<div class="btn-group-vertical">';
     // iterate through the madLibs and add the buttons
     for(var madLibIndex in madLibsJSON){
         var madLib = madLibsJSON[madLibIndex];
 
         var madLibSplit = madLib.toString().split(",");
-        console.log(madLibSplit);
 
-        //TODO find a way to put the title on the far left and the category on the far right without it looking fucking stupid
-        jHtml.find("div#madLibList").append($('<button type="button" class="list-group-item"> <div class="titleLeft">' + madLibSplit[0] + '</div> <div class="categoryRight">' + madLibSplit[1] + '</div></button>')).html();
+        //jHtml.find("div#madLibList").append(
+        //    '<div class=btn-group" role="group" >' +
+        //    '<button id=madlib-"' + madLibSplit[0] +
+        //    '" type="button" class="madlib list-group-item dropdown-toggle ' + madLibSplit[2] +
+        //    '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+        //    '<div class="titleLeft"><strong>' +
+        //    madLibSplit[1] + '</strong></div> <div class="categoryRight">' +
+        //    madLibSplit[2] + '</div></button><div class="dropdown-menu" aria-labelledby="madlib-' + madLibSplit[0] +
+        //    '"><a class="dropdown-item" href="FillMadlib.php">Fill It Out</a><a class="dropdown-item" href="EditMadLib.php">Edit</a></div></div>');
+
+        buttonHTML +=
+            '<div class="btn-group madlib-list" role="group"><button id="btnGroupVerticalDrop' + madLibSplit[0] +
+            '" type="button" class="btn btn-secondary dropdown-toggle madlib" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+            madLibSplit[1] +
+            '</button><div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop' + madLibSplit[0] +
+            '"><a class="dropdown-item" href="#">Edit</a><br /><a class="dropdown-item" href="#">Fill Out</a></div></div>';
     }
-    $("#content").html(jHtml);
+    // $("#content").html(jHtml);
+    buttonHTML += '</div>';
+
+    $('#content').html(buttonHTML);
 }
 
 /**
  * This function is only called if no mad libs exist in the database
  */
 var showNoMadLibs = function(){
-    $.ajax({
-        url: "resources/noMadLibs.html",
-        beforeSend: function () {
-            $('#loading').show();
-        },
-        success: function(data){
-            $("#content").html(data);
-        },
-        error: function(data){
-            console.log(data);
-        },
-        complete: function () { $('#loading').hide(); }
-    });
+    //$.ajax({
+    //    url: "resources/noMadLibs.html",
+    //    beforeSend: function () {
+    //        $('#loading').show();
+    //    },
+    //    success: function(data){
+    //        $("#content").html(data);
+    //    },
+    //    error: function(data){
+    //        console.log(data);
+    //    },
+    //    complete: function () { $('#loading').hide(); }
+    //});
+
+    $('#content').load('resources/noMadLibs.html');
 }
 
 /**
@@ -79,11 +99,11 @@ var loadCreatePage = function(){
             console.log(data);
         },
         complete: function () { $('#loading').hide(); }
-    });
+     });
 }
 
 /* Array of categories that can be selected for a mad lib */
-var categories = ["College", "Food", "Politics", "Pop Culture", "Sports", "Outdoors"];
+var categories = ["College", "Misc", "Political", "Pop-Culture", "Sports", "Outdoors"];
 
 /**
  * Load the categories into html

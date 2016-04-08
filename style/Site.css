@@ -19,10 +19,13 @@ body {
 
 .titleLeft {
     text-align: left;
+    display:inline-block;
 }
 
 .categoryRight{
     text-align: right;
+    float:right;
+    display:inline-block;
 }
 
 #loading{
@@ -45,4 +48,42 @@ body {
     background: url('../images/saving.gif') no-repeat center lightgray;
     opacity:.9;
     z-index:200;
+}
+
+.College{
+    background-color:aqua;
+}
+
+.Misc{
+    background-color:lightsalmon;
+}
+
+.Political{
+    background-color:rebeccapurple;
+}
+
+.Pop-Culture{
+    background-color:lawngreen;
+}
+
+.Sports{
+    background-color:deepskyblue;
+}
+
+.Outdoors{
+    background-color:darkorange;
+}
+
+.madlib{
+    margin-bottom:1%;
+    border-radius:5px;
+    font-size:1.25em;
+    text-align:center;
+    width:50%;
+
+}
+
+.madlib-list{
+    text-align:center;
+
 }

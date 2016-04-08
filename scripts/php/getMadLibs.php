@@ -6,7 +6,7 @@ require('functions.php');
 $conn = connectToSQL();
 
 
-$cmdText = 'SELECT TITLE, CATEGORY, RATING FROM MadLibs';
+$cmdText = 'SELECT SEQ_ID, TITLE, CATEGORY FROM MadLibs';
 
 $result = mysql_query($cmdText, $conn);
 if (!$result) {
