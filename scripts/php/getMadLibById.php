@@ -8,9 +8,6 @@
 //get madlib by ID
 require ('functions.php');
 
-sleep(2);
-
-
 $conn = connectToSQL();
 
 $cmdText = 'SELECT TITLE, MADLIB_TEXT, CATEGORY, RATING FROM MadLibs WHERE SEQ_ID = ' . $_GET['id'];

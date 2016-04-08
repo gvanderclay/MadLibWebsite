@@ -5,12 +5,14 @@
 var processMadLibsJson = function(madLibs){
     $.ajax({
         url: "resources/choosemadlib.html",
+        beforeSend: function () { $('#loading').show(); },
         success: function(data){
             makeMadLibList(data, madLibs);
         },
         error: function(data){
             console.log(data);
-        }
+        },
+        complete: function () { $('#loading').hide(); }
     });
 }
 
@@ -48,12 +50,16 @@ var makeMadLibList = function(html, madLibs){
 var showNoMadLibs = function(){
     $.ajax({
         url: "resources/noMadLibs.html",
+        beforeSend: function () {
+            $('#loading').show();
+        },
         success: function(data){
             $("#content").html(data);
         },
         error: function(data){
             console.log(data);
-        }
+        },
+        complete: function () { $('#loading').hide(); }
     });
 }
 
@@ -62,13 +68,17 @@ var showNoMadLibs = function(){
  */
 var loadCreatePage = function(){
      $.ajax({
-        url: "resources/madlibcreation.html",
+         url: "resources/madlibcreation.html",
+         beforeSend: function () {
+             $('#loading').show();
+         },
         success: function(data){
             loadCategories(data);
         },
         error: function(data){
             console.log(data);
-        }
+        },
+        complete: function () { $('#loading').hide(); }
     });
 }
 

@@ -1,24 +1,23 @@
 <div id="create">
-    <form class="form-horizontal" role="form">
+    <form onsubmit="saveMadLib();">
         <div class="form-group">
             <label for="title" class="col-sm-2 control-label">Title</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="title" placeholder="Title of the Mad Lib">
+                <input type="text" class="form-control" id="title" placeholder="Title of the Mad Lib" required>
             </div>
         </div>
         <div class="form-group">
             <label for="category" class="col-sm-2 control-label">Category</label>
             <div class="col-sm-8">
                 <div class="input-group">
-                        <select class="form-control" id="category">
-                        </select>
+                    <select class="form-control" id="category"></select>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <label for="madlibcontents" class="col-sm-2 control-label">Contents</label>
             <div class="col-sm-6">
-                <textarea class="form-control" id="madlibcontents" placeholder="Description" rows="10"></textarea>
+                <textarea required class="form-control" id="madlibcontents" placeholder="Description" rows="10"></textarea>
             </div>
             <div class="col-sm-4">
                 <div id="legend">
@@ -26,20 +25,13 @@
                     <p>Write your text as normal. When you want to insert a blank, wrap your selector in square brackets.</p>
                     <label>Example</label>
                     <p>I like to play [A game]. I think it is very [Adjective]</p>
-                    <!--                    <label>Legend</label>
-                    <ul>
-                        <li>Adjective: [adj]</li>
-                        <li>Adverb: [adv]</li>
-                        <li>Noun: [non]</li>
-                        <li>Name: [nme]</li>
-                    </ul>-->
-                    <br/>
+                    <br />
                 </div>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">Submit</button>
+                <input type="submit" class="btn btn-default" value="Save" />
             </div>
         </div>
     </form>

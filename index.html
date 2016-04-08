@@ -29,10 +29,10 @@ The sole purpose of this website is to fulfill the requirements for CIS 371 "Web
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="javascript:void(0)" onclick="getAllMadLibs()">Do a Mad Lib</a>
+                        <a id="Do" href="javascript:void(0)" onclick="getAllMadLibs()">Do a Mad Lib</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)" onclick="loadCreatePage()">Create a Mad Lib</a>
+                        <a id="Create" href="javascript:void(0)" onclick="loadCreatePage()">Create a Mad Lib</a>
                     </li>
                 </ul>
             </div>
@@ -54,7 +54,8 @@ The sole purpose of this website is to fulfill the requirements for CIS 371 "Web
         </div>
         <!-- /.container -->
 
-    <div id="loading"></div>
+    <div id="loading" style="display:none;"></div>
+    <div id="saving" style="display:none;"></div>
 
     <script src="https://code.jquery.com/jquery-1.12.2.min.js" integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
@@ -62,7 +63,6 @@ The sole purpose of this website is to fulfill the requirements for CIS 371 "Web
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-jgrowl/1.4.4/jquery.jgrowl.min.js" crossorigin="anonymous"></script>
     <script src="scripts/js/script.js"></script>
     <script src="scripts/js/db.service.js"></script>
-    <script src="scripts/js/loading-spinner.js"></script>
 </body>
 
 </html>

@@ -9,12 +9,14 @@ function getAllMadLibs ()
     $.ajax({
         type: "GET",
         url: 'scripts/php/getMadLibs.php',
+        beforeSend: function () { $('#loading').show(); },
         success: function (data) {
             processMadLibsJson(data);
         },
         error: function (data) {
            $.jGrowl("An Error occured loading mad libs.");
-        }
+        },
+        complete: function () { $('#loading').hide(); }
     });
 }
 
@@ -26,13 +28,15 @@ function getMadlibById(id)
     $.ajax({
         type: "GET",
         url: 'scripts/php/getMadLibById.php',
+        beforeSend: function(){$('#loading').show();},
         success: function (data) {
             $('#content').html(data);
         },
         error: function(data)
         {
             $.jGrowl('An error occured loading madlib id: ' + id);
-        }
+        },
+        complete: function () { $('#loading').hide(); }
     });
 }
 
@@ -41,34 +45,55 @@ function getMadlibById(id)
 function getHome() {
     $.ajax({
         url: 'resources/homepagetext.html',
+        beforeSend: function(){$('#loading').show();},
         success: function (data) {
             $('#content').html(data);
         },
         error: function (data) {
             $.jGrowl('An error occured loading the home page');
-        }
+        },
+        complete: function () { $('#loading').hide(); }
     });
 }
 
 
 //Send a stringified JSON object back to the php file. 
 //JSON object should be parsed on reciept and saved to the database.
-function saveMadLib(madLib)
+function saveMadLib()
 {
     $.ajax({
         type: "POST",
         url: 'scripts/php/saveMadLib.php',
-        data: JSON.stringify(madLib),
-        contentType: 'application/json',
+        data: prepMadLib(),
+        dataType:'JSON',
+        // contentType: 'application/json',
+        async:false,
+        beforeSend: function(){$('#saving').show();},
         success: function(data)
         {
+            $('#saving').hide();
             $.jGrowl('Mad Lib Saved');
+            
         },
         error: function(data)
         {
+            $('#saving').hide();
             $.jGrowl('Error saving Mad Lib');
         }
     });
+}
+
+function prepMadLib()
+{
+    var d = new Date();
+    var madLib = Object();
+    madLib.Title = $('#title').val();
+    madLib.Category = $('#category option:selected').text();
+    madLib.Contents = $('#madlibcontents').val();
+    madLib.TimeStamp = d.getYear() + '-' + d.getMonth() + '-' + d.getDay() +
+        ' ' + d.toTimeString().substr(0, 8);
+
+    return madLib;
 }
 
 $(document).ready(getHome);

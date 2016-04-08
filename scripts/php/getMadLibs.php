@@ -2,7 +2,6 @@
 //get madlib by ID
 require('functions.php');
 
-sleep(2);
 
 $conn = connectToSQL();
 
@@ -25,9 +24,6 @@ while($row = mysql_fetch_row($result) ){
 }
 
 echo json_encode($arr);
-
-
-
 
 
 ?>

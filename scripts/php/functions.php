@@ -16,11 +16,4 @@ $dbname = "jardine";
   return $conn;
   }
 
-
-  function loadTimer()
-  {
-        sleep(2);
-
-    }
-
 ?>
