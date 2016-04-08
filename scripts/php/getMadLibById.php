@@ -8,6 +8,8 @@
 //get madlib by ID
 require ('functions.php');
 
+sleep(2);
+
 
 $conn = connectToSQL();
 

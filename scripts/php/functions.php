@@ -17,4 +17,10 @@ $dbname = "jardine";
   }
 
 
+  function loadTimer()
+  {
+        sleep(2);
+
+    }
+
 ?>

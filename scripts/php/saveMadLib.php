@@ -5,7 +5,7 @@ require('functions.php');
 
 $conn = connectToSQL();
 
-
+sleep(2);
 
 $cmdText = 'INSERT INTO MadLibs(TITLE, CATEGORY, MADLIB_TEXT, RATING)
 VALUES('.$_POST['Title'] . ',' .$_POST['Category'] .', '.$_POST['MADLIB_TEXT'].','.$_POST['Rating'] . ');';
