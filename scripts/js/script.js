@@ -39,27 +39,26 @@ var makeMadLibList = function(html, madLibs){
 
         var madLibSplit = madLib.toString().split(",");
 
-        //jHtml.find("div#madLibList").append(
-        //    '<div class=btn-group" role="group" >' +
-        //    '<button id=madlib-"' + madLibSplit[0] +
-        //    '" type="button" class="madlib list-group-item dropdown-toggle ' + madLibSplit[2] +
-        //    '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-        //    '<div class="titleLeft"><strong>' +
-        //    madLibSplit[1] + '</strong></div> <div class="categoryRight">' +
-        //    madLibSplit[2] + '</div></button><div class="dropdown-menu" aria-labelledby="madlib-' + madLibSplit[0] +
-        //    '"><a class="dropdown-item" href="FillMadlib.php">Fill It Out</a><a class="dropdown-item" href="EditMadLib.php">Edit</a></div></div>');
+        //TODO find a way to put the title on the far left and the category on the far right without it looking fucking stupid
+        jHtml.find("div#madLibList").append($('<button id = "madLibBtn' + madLibSplit[0] + '" type="button" class="list-group-item">' + madLibSplit[1] + '</button>')).html();
 
-        buttonHTML +=
-            '<div class="btn-group madlib-list" role="group"><button id="btnGroupVerticalDrop' + madLibSplit[0] +
-            '" type="button" class="btn btn-secondary dropdown-toggle madlib" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
-            madLibSplit[1] +
-            '</button><div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop' + madLibSplit[0] +
-            '"><a class="dropdown-item" href="#">Edit</a><br /><a class="dropdown-item" href="#">Fill Out</a></div></div>';
+        jHtml.on('click', '#madLibBtn' + madLibSplit[0], function(){
+            // var id = madLibSplit[0];
+            // getMadlibById(id);
+            alert(madLibSplit[0]);
+        });
+        // buttonHTML +=
+        //     '<div class="btn-group madlib-list" role="group"><button id="btnGroupVerticalDrop' + madLibSplit[0] +
+        //     '" type="button" class="btn btn-secondary dropdown-toggle madlib" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+        //     madLibSplit[1] +
+        //     '</button><div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop' + madLibSplit[0] +
+        //     '"><a class="dropdown-item" href="#">Edit</a><br /><a class="dropdown-item" href="#">Fill Out</a></div></div>';
+
     }
     // $("#content").html(jHtml);
-    buttonHTML += '</div>';
+    //buttonHTML += '</div>';
 
-    $('#content').html(buttonHTML);
+    $('#content').html(jHtml);
 }
 
 /**
@@ -120,8 +119,37 @@ var loadCategories = function(html){
     $("#content").html(jHtml);
 }
 
+var doMadLib = function(madLib){
+    $.ajax({
+        url: "resources/doMadLib.html",
+        beforeSend: function () {
+            $('#loading').show();
+        },
+        success: function(data){
+            var madLibJSON = jQuery.parseJSON(madLib);
+            console.log(madLibJSON);
+            console.log(madLibJSON[0]);
+        },
+        error: function(data){
+            console.log(data);
+        },
+        complete: function () { $('#loading').hide(); }
+    });
+}
+
+var addMadLibDescriptors = function(html){
+    html = '<div>' + html + '</div>';
+    var jHtml = $(html);
+    var descriptors
+}
+
 var testStr = "This is a simple test for my Mad Lib website. [Adjective] ad;fajf;l;akjijcicjijeinamn,nsdf,mn [Noun] a;dlkjbzoeowijrlknakjdf [a game]. a;sdjlzbhoiehoj [that game again].";
 
+/**
+ * Gets the description words from the mad lib
+ * @param str The string containing the mad lib
+ * @returns {Array|{index: number, input: string}} Array of descriptor words
+ */
 var parseMadLib = function(str){
     var regex = /\[(.*?)\]/gm;
     return  str.match(regex);
