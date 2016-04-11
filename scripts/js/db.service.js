@@ -74,6 +74,8 @@ function saveMadLib()
         {
             $('#saving').hide();
             $.jGrowl('Mad Lib Saved');
+            $('input').val('');
+            $('textarea').val('');
             
         },
         error: function(data)
