@@ -5,7 +5,7 @@ require('functions.php');
 $conn = connectToSQL();
 
 $cmdText = 'INSERT INTO MadLibs (TITLE,CATEGORY,MADLIB_TEXT,REG_DATE) '. 
-'VALUES("'.$_POST['Title'] . '","' .$_POST['Category'] .'", "'.$_POST['Contents'].'","'.$_POST['TimeStamp'].'");';
+'VALUES("'.mysql_real_escape_string($_POST['Title']) . '","' .mysql_real_escape_string($_POST['Category']) .'", "'.mysql_real_escape_string($_POST['Contents']).'","'.mysql_real_escape_string($_POST['TimeStamp']).'");';
 
 $result = mysql_query($cmdText);
 if (!$result) {
