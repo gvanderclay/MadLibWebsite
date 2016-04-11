@@ -5,7 +5,7 @@ require ('functions.php');
 
 $conn = connectToSQL();
 
-$cmdText = 'SELECT TITLE, MADLIB_TEXT, CATEGORY, RATING FROM MadLibs WHERE SEQ_ID = ' . $_GET['id'];
+$cmdText = 'SELECT TITLE, MADLIB_TEXT, CATEGORY, RATING FROM MadLibs WHERE SEQ_ID = ' . mysql_real_escape_string($_GET['id']);
 
 
 $result = mysql_query($cmdText, $conn);
