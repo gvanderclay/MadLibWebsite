@@ -43,10 +43,10 @@ var makeMadLibList = function(html, madLibs){
         jHtml.find("div#madLibList").append($('<button id = "madLibBtn' + madLibSplit[0] + '" type="button" class="list-group-item">' + madLibSplit[1] + '</button>')).html();
 
         jHtml.on('click', '#madLibBtn' + madLibSplit[0], function(){
-            // var id = madLibSplit[0];
-            // getMadlibById(id);
-            alert(madLibSplit[0]);
-        });
+            var pattern = /madLibBtn(\d*)/g;
+            var id = pattern.exec(this.id)[1];
+            getMadlibById(id);
+        })
         // buttonHTML +=
         //     '<div class="btn-group madlib-list" role="group"><button id="btnGroupVerticalDrop' + madLibSplit[0] +
         //     '" type="button" class="btn btn-secondary dropdown-toggle madlib" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
@@ -127,8 +127,8 @@ var doMadLib = function(madLib){
         },
         success: function(data){
             var madLibJSON = jQuery.parseJSON(madLib);
-            console.log(madLibJSON);
-            console.log(madLibJSON[0]);
+            var descriptors = parseMadLib(madLibJSON[1]);
+            addMadLibDescriptors(data, descriptors);
         },
         error: function(data){
             console.log(data);
@@ -137,10 +137,23 @@ var doMadLib = function(madLib){
     });
 }
 
-var addMadLibDescriptors = function(html){
+var addMadLibDescriptors = function(html, descriptors){
     html = '<div>' + html + '</div>';
     var jHtml = $(html);
-    var descriptors
+    for(var index in descriptors){
+        var pattern = /\[(\w*)\]/g
+        var descriptor = descriptors[index];
+        descriptor = pattern.exec(descriptor)[1];
+        var input = '<div class ="form-group"><label for="descriptor' + index + '">' + descriptor + '</label><input type="text" class="form-control" id="descriptor' + index + '"></div>';
+        jHtml.find("form#madLibInput").append($(input)).html();
+    }
+    jHtml.find("form#madLibInput").append($('<button type="button" class="btn btn-default" onclick="test()">Submit</button>')).html();
+    $("#content").html(jHtml);
+}
+
+var processMadLibFormInput = function(){
+    
+    alert("alert");
 }
 
 var testStr = "This is a simple test for my Mad Lib website. [Adjective] ad;fajf;l;akjijcicjijeinamn,nsdf,mn [Noun] a;dlkjbzoeowijrlknakjdf [a game]. a;sdjlzbhoiehoj [that game again].";
