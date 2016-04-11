@@ -197,7 +197,7 @@ var validateInput = function(){
  */
 var displayCompleteMadLib = function(madLib, descriptors, descriptorTags){
     var completedMadLib = insertWordsInMadLib(madLib, descriptors, descriptorTags);
-    console.log(completedMadLib);
+    $('#content').html(completedMadLib);
 };
 
 /**
@@ -212,7 +212,7 @@ var insertWordsInMadLib = function(madLib, descriptors, descriptorTags){
     for(var index in descriptors){
         var descriptor = descriptors[index];
         var tag = descriptorTags[index];
-        madLib.replace('[' + tag + ']', descriptor);
+        madLib = madLib.replace('[' + tag + ']', descriptor);
     }
     return madLib;
 };
