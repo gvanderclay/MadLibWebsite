@@ -1,9 +1,4 @@
-<html>
-<head></head>
-<body>
-
-
-<?php 
+<?php
 
 //get madlib by ID
 require ('functions.php');
@@ -51,7 +46,3 @@ mysql_close($conn);
 
 
 ?>
-
-</body>
-
-</html>

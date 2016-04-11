@@ -28,9 +28,10 @@ function getMadlibById(id)
     $.ajax({
         type: "GET",
         url: 'scripts/php/getMadLibById.php',
+        data: {"id": id},
         beforeSend: function(){$('#loading').show();},
         success: function (data) {
-            $('#content').html(data);
+            doMadLib(data);
         },
         error: function(data)
         {
