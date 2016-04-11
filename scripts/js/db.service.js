@@ -74,8 +74,20 @@ function saveMadLib()
         {
             $('#saving').hide();
             $.jGrowl('Mad Lib Saved');
-            $('input').val('');
-            $('textarea').val('');
+            
+            $.ajax({
+                type: 'GET',
+                url: 'scripts/php/finishedMadLib.php',
+                beforeSend: function () { $('#saving').show(); },
+                success: function (data) {
+                    $("#content").html(data);
+                    $('#saving').show();
+                },
+                error: function (data) {
+                    $.jGrowl('Error Finished MadLib');
+                    $('#saving').show();
+                }
+            });
             
         },
         error: function(data)
