@@ -127,7 +127,7 @@ var addMadLibDescriptors = function(html, descriptorTags, madLib){
     // insert each descriptor with a text area into the web page
     for(var index in descriptorTags){
         // remove the square brackets from the descriptorTags
-        var pattern = /\[(\w*)\]/g;
+        var pattern = /\[([\w\s]*)\]/g;
         var descriptorTag = descriptorTags[index];
         descriptorTag = pattern.exec(descriptorTag)[1];
         // add text area and label
@@ -173,6 +173,7 @@ var validateInput = function(){
         // if the value is empty apply a border and count a blank input
         if($(this).val().trim() == ""){
             $(this).css('border', '1px solid red');
+            $(this).effect("shake");
             blankInputs++;
         }
         else{
