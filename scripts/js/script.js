@@ -198,7 +198,7 @@ var validateInput = function () {
  */
 var displayCompleteMadLib = function (madLib, descriptors, descriptorTags) {
     var completedMadLib = insertWordsInMadLib(madLib, descriptors, descriptorTags);
-    $('#content').html(completedMadLib);
+    $('#content').html('<p>' + completedMadLib + '</p>');
 };
 
 /**
