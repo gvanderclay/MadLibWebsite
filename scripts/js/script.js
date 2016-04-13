@@ -213,7 +213,7 @@ var insertWordsInMadLib = function (madLib, descriptors, descriptorTags) {
     for (var index in descriptors) {
         var descriptor = descriptors[index];
         var tag = descriptorTags[index];
-        madLib = madLib.replace('[' + tag + ']', descriptor);
+        madLib = madLib.replace('[' + tag + ']', '<span class="descriptor">' + descriptor + '</span>');
     }
     return madLib;
 };
